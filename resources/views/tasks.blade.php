@@ -27,11 +27,14 @@
                         <th>ID</th>
                         <th>Task</th>
                         <th>Completed</th>
+
+                        @foreach($tasks as $task)
                         <tr>
-                            <td>1</td>
-                            <td>I have lering larvel Today</td>
-                            <td>not yet</td>
+                            <td>{{$task->id}}</td>
+                            <td>{{$task->task}}</td>
+                            <td>{{$task-> iscompleted}}</td>
                         </tr>
+                        @endforeach
                     </table>
                 </div>
             </div>

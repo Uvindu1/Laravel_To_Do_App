@@ -17,6 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/tasks','App\Http\Controllers\FrontEndControler@taskApp');
+Route::get('/tasks',function(){
+    $data = App\Models\Task::all();
+    return view('tasks')->with('tasks',$data);
+});
 
 Route::post('/tasks/saveTask','App\Http\Controllers\TaskController@store');
