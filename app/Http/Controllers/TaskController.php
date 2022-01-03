@@ -14,7 +14,11 @@ class TaskController extends Controller
         ]);
         $task -> task = $request -> task;
         $task -> save();
-        return redirect()->back();
+        $data = task::all();
+
+        return viwe('tasks')->with('tasks',$data);
+        
+     //   return redirect()->back();
      /*   $this->validate($request,[
             'task'=>'required|max:100|min:5',
         ]);
