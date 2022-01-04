@@ -12,6 +12,11 @@
             <h2>Daily Tasks<h2>
             <div class="row">
                 <div class="col-md-12">
+                    @foreach($errors->all() as $errors)
+                        <div class = "alert alert-danger" role="alert">
+                            {{$errors}}
+                        </div>
+                    @endforeach
                     <form method="post" action="/tasks/saveTask">
                         @csrf    
                         <input type="text" class="form-control" name="task" placeholder="enter your task here">
@@ -22,11 +27,30 @@
                         <th>ID</th>
                         <th>Task</th>
                         <th>Completed</th>
+                        <th>Action</th>
+
+                        @foreach($tasks as $task)
                         <tr>
-                            <td>1</td>
-                            <td>I have lering larvel Today</td>
-                            <td>not yet</td>
+                            <td>{{$task->id}}</td>
+                            <td>{{$task->task}}</td>
+                            <td>
+                                @if($task->iscompleted)
+                                <button class="btn btn-success">Completed</button>
+                                @else
+                                <button class="btn btn-warning">Not Completed</button>
+                                @endif
+                            </td>
+                            <td>
+                                @if(!$task->iscompleted)
+                                <a href="/markascompleted/{{$task->id}}" class ="btn btn-primary">mark As Completed</a> 
+                                @else
+                                <a href="/markasNotcompleted/{{$task->id}}" class ="btn btn-danger">mark As Not Completed</a> 
+                                @endif
+                                <a href="/Delete/{{$task->id}}" class ="btn btn-warning">DELETE</a>
+                                <a href="/updateTask/{{$task->id}}" class ="btn btn-success">Update</a>
+                            </td>
                         </tr>
+                        @endforeach
                     </table>
                 </div>
             </div>
