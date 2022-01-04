@@ -16,7 +16,7 @@ class TaskController extends Controller
         $task -> save();
         $data = task::all();
 
-        return viwe('tasks')->with('tasks',$data);
+        return view('tasks')->with('tasks',$data);
         
      //   return redirect()->back();
      /*   $this->validate($request,[
@@ -47,6 +47,17 @@ class TaskController extends Controller
 
     public function updatetaskview($id){
       $task = Task::find($id);
-        return viwe('updatetask')->with('taskdata',$task);
+        return view('updatetask')->with('taskdata',$task);
+    }
+
+
+    public function updatenewtask(Request $request){
+      $id=$request->id;
+      $task=$request->task;
+      $data = Task::find($id);
+      $data->task = $task;
+      $data->save();
+      $data = task::all();
+      return view('tasks')->with('tasks',$data);
     }
 }
