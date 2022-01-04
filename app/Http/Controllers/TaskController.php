@@ -44,4 +44,9 @@ class TaskController extends Controller
       return redirect()->back(); 
 
     }
+
+    public function updatetaskview($id){
+      $task = Task::find($id);
+        return viwe('updatetask')->with('taskdata',$task);
+    }
 }

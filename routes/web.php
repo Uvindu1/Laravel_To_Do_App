@@ -29,3 +29,5 @@ Route::get('/markascompleted/{id}','App\Http\Controllers\TaskController@UpdateTa
 Route::get('/markasNotcompleted/{id}','App\Http\Controllers\TaskController@UpdateTaskAsNotCompleted');
 
 Route::get('/Delete/{id}','App\Http\Controllers\TaskController@Deleted');
+
+Route::get('/updateTask/{id}','App\Http\Controllers\TaskController@updatetaskview');
