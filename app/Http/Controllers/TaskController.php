@@ -37,4 +37,11 @@ class TaskController extends Controller
       $task -> save();
       return redirect()->back(); 
     }
+
+    public function Deleted($id){
+      $task = Task::find($id);
+      $task -> delete();
+      return redirect()->back(); 
+
+    }
 }
