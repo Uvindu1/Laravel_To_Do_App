@@ -9,8 +9,10 @@
 </head>
 <body>
     <div class="container">
-        <form action="#" method="post">
-            <input type="text" class="form-control" name="task" value={{$taskdata->task}}/>
+        <form action="/updatenewtask" method="post">
+            @csrf
+            <input type="text" class="form-control" name="task" value="{{$taskdata->task}}"/>
+            <input type="hidden" name="id" value="{{$taskdata->id}}"/>
             <input type="submit" class="btn btn-warning" value="Update"/>
             &nbsp;
             &nbsp;
